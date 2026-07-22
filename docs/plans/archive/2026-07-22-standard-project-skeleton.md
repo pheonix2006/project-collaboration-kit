@@ -2,7 +2,7 @@
 
 日期：2026-07-22
 
-状态：当前可执行
+状态：已完成，仅作历史证据
 
 ## 目标
 
@@ -40,7 +40,7 @@
 
 - [x] 删除六份独立理论说明和旧案例。
 - [x] 删除旧 `docs/superpowers/` 结构，依赖 Git 历史追溯。
-- [ ] 将本设计和本计划移入各自 archive，并完成状态更新。
-- [ ] 检查所有 Markdown 相对链接。
-- [ ] 运行范围扫描和 `git diff --check`。
-- [ ] 提交并推送 `main`，核验本地 HEAD 与 `origin/main` 一致。
+- [x] 将本设计和本计划移入各自 archive，并完成状态更新。
+- [x] 检查所有 Markdown 相对链接。
+- [x] 运行范围扫描和 `git diff --check`。
+- [x] 提交并推送 `main`，核验本地 HEAD 与 `origin/main` 一致。
