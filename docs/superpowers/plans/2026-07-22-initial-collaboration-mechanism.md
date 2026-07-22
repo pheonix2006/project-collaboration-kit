@@ -1,5 +1,7 @@
 # Initial Collaboration Mechanism Implementation Plan
 
+状态：已完成，仅作实施证据，不再作为当前待办
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 交付一套可独立阅读、可由其他项目选择性复用的跨会话协作机制规范，并发布到私有 GitHub 仓库。
@@ -157,7 +159,7 @@ Expected: diff check exit 0，状态只包含计划内 Markdown，分支差异�
 - Consumes: 已通过最终审查和完整验证的实现分支。
 - Produces: 私有 GitHub 仓库、远端跟踪分支和 Draft PR。
 
-- [ ] **Step 1: 创建私有远端并推送 main**
+- [x] **Step 1: 创建私有远端并推送 main**
 
 Run: `gh repo create project-collaboration-kit --private --source=. --remote=origin --description '跨会话长期项目协作机制规范'`
 Expected: 创建 `pheonix2006/project-collaboration-kit`，配置 `origin`。
@@ -165,19 +167,27 @@ Expected: 创建 `pheonix2006/project-collaboration-kit`，配置 `origin`。
 Run: `git push -u origin main`
 Expected: 远端 main 包含两次设计提交。
 
-- [ ] **Step 2: 推送实现分支**
+- [x] **Step 2: 推送实现分支**
 
 Run: `git push -u origin agent/initial-collaboration-mechanism`
 Expected: 设置远端跟踪且无拒绝。
 
-- [ ] **Step 3: 创建 Draft PR**
+- [x] **Step 3: 创建 Draft PR**
 
 先通过 `apply_patch` 创建 `/tmp/project-collaboration-kit-pr.md`，正文固定包含“变更内容、设计动机、使用影响、验证证据”四节及实际验证命令。然后运行：
 
 Run: `gh pr create --draft --base main --head agent/initial-collaboration-mechanism --title 'docs: establish cross-session collaboration mechanism' --body-file /tmp/project-collaboration-kit-pr.md`
 Expected: 返回可访问的 GitHub PR URL；正文包含变更、动机、影响和验证证据。
 
-- [ ] **Step 4: 远端核验**
+- [x] **Step 4: 远端核验**
 
 Run: `gh repo view --json nameWithOwner,isPrivate,defaultBranchRef,url && gh pr view --json number,state,isDraft,url,baseRefName,headRefName`
 Expected: 仓库为 private、默认分支为 main，PR 状态 OPEN 且 isDraft=true。
+
+## 发布结果
+
+- 私有仓库：`https://github.com/pheonix2006/project-collaboration-kit`
+- 默认分支：`main`
+- 实现分支：`agent/initial-collaboration-mechanism`
+- Draft PR：`https://github.com/pheonix2006/project-collaboration-kit/pull/1`
+- 远端核验：仓库 `isPrivate=true`，PR `state=OPEN` 且 `isDraft=true`。
